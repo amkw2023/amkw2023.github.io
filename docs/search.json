@@ -4,7 +4,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "My name is Alden Kling. I am currently taking DSR002 at Pomona College."
+  },
+  {
+    "objectID": "TidyTuesday.html",
+    "href": "TidyTuesday.html",
+    "title": "TidyTuesday",
+    "section": "",
+    "text": "library(ggplot2)\nenglish_education &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')\n\nRows: 1104 Columns: 31\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (13): town11cd, town11nm, size_flag, rgn11nm, coastal, coastal_detailed,...\ndbl (18): population_2011, ks4_2012_2013_counts, key_stage_2_attainment_scho...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) +\n  geom_point(aes(color = university_flag),  alpha = 0.5) +\n  scale_y_log10() +\n  labs(\n    y = \"town population (1000s)\",\n    x = \"education score\",\n    title = \"Town Population in English Towns Vs. Education Score\"\n)\n\nWarning: Removed 4 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\nlibrary(ggplot2)\nteam_results &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-26/team-results.csv')\n\nRows: 236 Columns: 20\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): TEAM, F4PERCENT, CHAMPPERCENT\ndbl (17): TEAMID, PAKE, PAKERANK, PASE, PASERANK, GAMES, W, L, WINPERCENT, R...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nggplot(team_results, aes(y = R64, x = PAKE)) +\n  geom_point(aes(color = CHAMP), size = 3, alpha = 0.8) +\n  scale_color_gradient(low=\"lightblue\", high=\"black\") +\n  labs(\n    y = \"tournaments attended\",\n    x = \"performance against komputer expectation\",\n    title = \"Tournaments Attended Vs. Performance Against Komputer Expectation\"\n)"
   },
   {
     "objectID": "index.html",

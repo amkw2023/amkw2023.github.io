@@ -2,7 +2,9 @@
 title: "TidyTuesday"
 ---
 
+
 ```{r}
+library(ggplot2)
 english_education <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')
 
 ggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) +
@@ -17,6 +19,7 @@ ggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) 
 
 
 ```{r}
+library(ggplot2)
 team_results <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-26/team-results.csv')
 
 ggplot(team_results, aes(y = R64, x = PAKE)) +
