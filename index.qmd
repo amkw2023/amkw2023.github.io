@@ -1,7 +1,16 @@
 ---
-title: "amkw2023.github.io"
+title: "Alden Kling"
+image: media/lebron.jpeg
+2toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: GitHub
+      href: https://github.com/amkw2023
+    - text: Email
+      href: mailto:amkw2023@mymail.pomona.edu
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+My name is Alden Kling, and this is my website.
