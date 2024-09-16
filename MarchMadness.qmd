@@ -1,22 +1,6 @@
 ---
-title: "TidyTuesday"
+title: "March Madness"
 ---
-
-
-```{r}
-library(ggplot2)
-english_education <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')
-
-ggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) +
-  geom_point(aes(color = university_flag),  alpha = 0.5) +
-  scale_y_log10() +
-  labs(
-    y = "town population (1000s)",
-    x = "education score",
-    title = "Town Population in English Towns Vs. Education Score"
-)
-```
-
 
 ```{r}
 library(ggplot2)

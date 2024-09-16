@@ -9,7 +9,12 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - TidyTuesday.qmd
+      - text: "Data Viz"
+        menu: 
+         - text: "March Madness"
+           href: MarchMadness.html
+         - text: "Education in English Towns"
+           href: EnglishEd.html
 
 format:
   html:
