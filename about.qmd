@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-About this site
+My name is Alden Kling. I am currently taking DSR002 at Pomona College.

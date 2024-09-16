@@ -1,0 +1,30 @@
+---
+title: "TidyTuesday"
+---
+
+```{r}
+english_education <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv')
+
+ggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) +
+  geom_point(aes(color = university_flag),  alpha = 0.5) +
+  scale_y_log10() +
+  labs(
+    y = "town population (1000s)",
+    x = "education score",
+    title = "Town Population in English Towns Vs. Education Score"
+)
+```
+
+
+```{r}
+team_results <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-26/team-results.csv')
+
+ggplot(team_results, aes(y = R64, x = PAKE)) +
+  geom_point(aes(color = CHAMP), size = 3, alpha = 0.8) +
+  scale_color_gradient(low="lightblue", high="black") +
+  labs(
+    y = "tournaments attended",
+    x = "performance against komputer expectation",
+    title = "Tournaments Attended Vs. Performance Against Komputer Expectation"
+)
+```
