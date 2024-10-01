@@ -1,9 +1,11 @@
 ---
 title: "DickinsonPoems"
+execute:
+  warning: false
+  error: false
 ---
 
 ```{r}
-#| echo: false
 library(tidyverse)
 library(viridis)
 library(tidytext)
@@ -49,7 +51,7 @@ ggplot(aes(x = series, y = nlines, fill = series)) +
   )
 ```
 
-These plots investigate the distribution of the number of lines in each poem through out each of the three series in the collection. As it turns out, the number of lines and their distribution was relatively consistent throughout series. It is notable that there are far more poems in series three than the other two. By far the most interesting detail to come out of this relatively mundane set of plots is the grouping that occurs in series three. Especially evident because of the increased sample, there are clearly grouped tiers at 3, 7, 12, 15, 20, and 24 lines.
+These plots investigate the distribution of the number of lines in each poem through out each of the three series in the collection. As it turns out, the number of lines and their distribution was relatively consistent throughout series. It is notable that there are far more poems in series three than the other two. By far the most interesting detail to come out of this relatively mundane set of plots is the grouping that occurs in series three. Especially evident because of the larger sample size, there are clearly grouped tiers at 3, 7, 12, 15, 20, and 24 lines.
 
 ```{r}
 spacy_install()
@@ -71,7 +73,7 @@ word_freq <- data.frame(text = str_c(poems$poem)) |>
   filter(!word %in% excluded_words)
 word_freq$word[1] <- toupper(word_freq$word[1])
 
-wordcloud2(data = word_freq, size = 2)
+wordcloud2(data = word_freq, size = 2.5)
 ```
 
 Next I wanted to investigate the content of the poems. To do this, I created a word cloud of all the nouns in Dickinson's poetry. First, I created a new data frame using the poem strings contained in my previous data frame. The new data frame is also long. Each unit of observation is a word used in the poems, and the table includes two columns, the word and how many times it appears throughout the collection. I sepperatly used the spacyr package to create a list of all the nouns that appeared in the collection. I used this, combined with a coustom list of excluded words that slipped through spacy, to filter my data frame to only include nouns. Finally, I used the wordcloud2 package to create the wordcloud.
