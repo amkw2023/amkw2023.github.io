@@ -1,5 +1,5 @@
 ---
-title: "DickinsonPoems"
+title: "Dickinson's Poems"
 execute:
   warning: false
   error: false
