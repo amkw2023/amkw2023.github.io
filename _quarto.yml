@@ -15,6 +15,8 @@ website:
            href: MarchMadness.html
          - text: "Education in English Towns"
            href: EnglishEd.html
+         - text: "Dickinson's Poems"
+           href: DickinsonPoems.html
 
 format:
   html:
