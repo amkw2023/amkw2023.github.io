@@ -1,0 +1,57 @@
+---
+title: "Does American Airlines Suck?"
+execute:
+  warning: false
+  error: false
+---
+
+Recently, every time I've flown on American Airlines, it feels like my plane's departure is always delayed, leading me to wonder, does American Airlines suck? To determine if American Airlines has a statistically significant difference in average departure delay, I will conducts a permutation test of American Airlines departure delays by simulating behavior under the null hypothesis. I will use data from the 'nycflights13' data set. @ Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://github.com/hadley/nycflights13. I will begin by finding the observed difference in average departure delay time for American Airlines. I will then simulate this result under the null hypthesis by shuffling the flight carriers, and calculating the difference in average departure delay time for flights now marked as American Airlines. I will finally calculate the p-value using this null distribution and my observed value, and I will show the null distribution compared to the observed value on a histogram.
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+library(purrr)
+library(ggplot2)
+```
+
+```{r}
+airline <- "AA"
+
+observe_diff <- function(a){
+  flights |>
+  group_by(carrier) |>
+  summarize(mean_dep_delay = mean(dep_delay, na.rm = TRUE)) |>
+  summarize(diff = mean_dep_delay[carrier == a] - mean(mean_dep_delay[carrier != a])) |>
+  pull(diff)
+}
+observed_diff <- observe_diff(airline)
+
+set.seed(4747)
+n <- 10000
+null_diffs <- map_dbl(1:n, ~{
+  flights |>
+    mutate(shuffled_carrier = sample(flights$carrier)) |>
+    group_by(shuffled_carrier) |>
+    summarize(mean_dep_delay = mean(dep_delay, na.rm = TRUE)) |>
+    summarize(diff = mean_dep_delay[shuffled_carrier == airline] - mean(mean_dep_delay[shuffled_carrier != airline])) |>
+    pull(diff)
+})
+
+p_value <- mean(abs(null_diffs) >= abs(observed_diff))
+print(paste("P-value:", p_value))
+
+ggplot(data = data.frame(null_diffs), aes(x = null_diffs)) +
+  geom_histogram(binwidth = 0.1, color = "black", fill = "lightblue") +
+  geom_vline(xintercept = observed_diff, color = "red", linetype = "dashed", linewidth = 1) +
+  labs(title = "Null Distribution of Permutation Test for Average Departure Delay Time",
+       x = "Permuted Mean Differences in Average Departure Delay Time",
+       y = "Frequency") +
+  theme_minimal() +
+  annotate("text", x = observed_diff, y = 350, label = paste("Observed Difference -- P-value:", p_value), color = "red", angle = 90, vjust = -0.5)
+```
+
+This plot shows the distribution of 10000 permutations of the difference in average departure delay under the null hypothesis. The dashed red line represents the observed difference in average departure delay. A negative x value means that average departure delays of American Airlines were less than that of other airlines.
+
+By examining the plot as well as the P-value of 0, it becomes painfully obvious that American Airlines does a statistically significant difference in average departure delay, however, it is not in the direction that I hypothesized. I was hoping to validate my hypothesis by finding that American Airlines has significantly more average departure delay time than other airlines in the dataset. As it turns out, American Airlines is significantly less departure delays than other airlines in this data set.
+
+I originally set out to see if American Airlines had significantly worse departure delays than other airlines. To do this, I conducted a permutation test of American Airlines departure delays by simulating behavior under the null hypothesis. My hypothesis was proven false, as I found that American Airlines is significantly better departure delays than other airlines in this data set. It is important to note that American still averages positive delay time, it is just better than that of other airlines.

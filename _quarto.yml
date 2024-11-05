@@ -17,6 +17,8 @@ website:
            href: EnglishEd.html
          - text: "Dickinson's Poems"
            href: DickinsonPoems.html
+         - text: "Does American Airlines Suck?"
+           href: AmAirSucks.html
 
 format:
   html:
