@@ -19,6 +19,8 @@ website:
            href: DickinsonPoems.html
          - text: "Does American Airlines Suck?"
            href: AmAirSucks.html
+         - text: "Investigation of Mean Absorbance"
+           href: MeanAbsorbance.html
 
 format:
   html:
