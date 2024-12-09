@@ -1,7 +1,12 @@
 ---
 title: "Education in English Towns"
+execute:
+  warning: false
+  error: false
 ---
 
+This is analysis of a data set of education in English towns, which is from the 2021 cencus by The UK Office for National Statistics.
+The data can be found at https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/educationandchildcare/datasets/educationalattainmentofyoungpeopleinenglishtownsdata/200708201819/youngpeoplesattainmentintownsreferencetable1.xlsx.
 
 ```{r}
 library(ggplot2)
@@ -16,3 +21,5 @@ ggplot(english_education, aes(y = population_2011 / 1000, x = education_score)) 
     title = "Town Population in English Towns Vs. Education Score"
 )
 ```
+
+Analyzing this plot, the first think I noticed is that the towns with universities tend to be larger than those without, with all the largest towns having universities. It also seemed that having a university did not significantly alter the expected education scores. More generally, I noticed that larger towns tended to skew towards lower education scores.

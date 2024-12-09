@@ -21,6 +21,8 @@ website:
            href: AmAirSucks.html
          - text: "Investigation of Mean Absorbance"
            href: MeanAbsorbance.html
+         - text: "Word Cloud Presentation"
+           href: Slides.html
 
 format:
   html:

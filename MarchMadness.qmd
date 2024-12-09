@@ -1,6 +1,11 @@
 ---
 title: "March Madness"
+execute:
+  warning: false
+  error: false
 ---
+
+This is analysis of a data set of NCAA Men's March Madness, which can be found at https://www.kaggle.com/datasets/nishaanamin/march-madness-data.
 
 ```{r}
 library(ggplot2)
@@ -15,3 +20,4 @@ ggplot(team_results, aes(y = R64, x = PAKE)) +
     title = "Tournaments Attended Vs. Performance Against Komputer Expectation"
 )
 ```
+Analyzing this plot, it was interesting to see that schools with less than 4 attendances seemed to generally perform better against komputer expectation than those with between 4 and 8 attendances. It is also interesting to note that there are no champions from schools with less than 9 attendances. As expected, championship programs tended to have high performance against komputer expectation scores, with the top 2 scores both coming from multi time champs.

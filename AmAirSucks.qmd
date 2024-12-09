@@ -5,7 +5,7 @@ execute:
   error: false
 ---
 
-Recently, every time I've flown on American Airlines, it feels like my plane's departure is always delayed, leading me to wonder, does American Airlines suck? To determine if American Airlines has a statistically significant difference in average departure delay, I will conducts a permutation test of American Airlines departure delays by simulating behavior under the null hypothesis. I will use data from the 'nycflights13' data set. @ Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://github.com/hadley/nycflights13. I will begin by finding the observed difference in average departure delay time for American Airlines. I will then simulate this result under the null hypthesis by shuffling the flight carriers, and calculating the difference in average departure delay time for flights now marked as American Airlines. I will finally calculate the p-value using this null distribution and my observed value, and I will show the null distribution compared to the observed value on a histogram.
+Recently, every time I've flown on American Airlines, it feels like my plane's departure is always delayed, leading me to wonder, does American Airlines suck? To determine if American Airlines has a statistically significant difference in average departure delay, I will conducts a permutation test of American Airlines departure delays by simulating behavior under the null hypothesis. I will use data from the 'nycflights13' data set. @ Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://nycflights13.tidyverse.org/authors.html. I will begin by finding the observed difference in average departure delay time for American Airlines. I will then simulate this result under the null hypthesis by shuffling the flight carriers, and calculating the difference in average departure delay time for flights now marked as American Airlines. I will finally calculate the p-value using this null distribution and my observed value, and I will show the null distribution compared to the observed value on a histogram.
 
 ```{r}
 library(tidyverse)
@@ -30,7 +30,7 @@ set.seed(4747)
 n <- 10000
 null_diffs <- map_dbl(1:n, ~{
   flights |>
-    mutate(shuffled_carrier = sample(flights$carrier)) |>
+    mutate(shuffled_carrier = sample(carrier)) |>
     group_by(shuffled_carrier) |>
     summarize(mean_dep_delay = mean(dep_delay, na.rm = TRUE)) |>
     summarize(diff = mean_dep_delay[shuffled_carrier == airline] - mean(mean_dep_delay[shuffled_carrier != airline])) |>
