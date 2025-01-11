@@ -1,6 +1,6 @@
 ---
 title: "Alden Kling"
-image: media/lebron.jpeg
+image: media/rosterphoto.jpeg
 2toc: false
 about: 
   template: jolla
