@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "My name is Alden Kling. This page is a catalouge of the work I did while taking DSR002 at Pomona College."
+    "text": "This website shows work I did in DS 002R: Foundations of Data Science in R, at Pomona College in spring 2024."
   },
   {
     "objectID": "EnglishEd.html",
@@ -95,6 +95,6 @@
     "href": "index.html",
     "title": "Alden Kling",
     "section": "",
-    "text": "My name is Alden Kling, and this is my website."
+    "text": "Welcome!"
   }
 ]

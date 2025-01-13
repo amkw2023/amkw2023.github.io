@@ -12,5 +12,4 @@ about:
     - text: Email
       href: mailto:amkw2023@mymail.pomona.edu
 ---
-
-My name is Alden Kling, and this is my website.
+Welcome!
